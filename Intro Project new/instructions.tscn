@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0ded7fpydxtb"]
+
+[ext_resource type="FontFile" uid="uid://vrey1i77dju2" path="res://fonts/lemon_milk/LEMONMILK-Bold.otf" id="1_xjpkv"]
+[ext_resource type="FontFile" uid="uid://bqr8uwcokcqa4" path="res://fonts/lemon_milk/LEMONMILK-Medium.otf" id="2_1g1xt"]
+[ext_resource type="Script" path="res://Button.gd" id="3_aes65"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 958.0
+offset_bottom = 538.0
+color = Color(0.568627, 1, 1, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 258.0
+offset_top = 94.0
+offset_right = 711.0
+offset_bottom = 221.0
+theme_override_fonts/font = ExtResource("1_xjpkv")
+theme_override_font_sizes/font_size = 90
+text = "Wipeout"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 226.0
+offset_right = 703.0
+offset_bottom = 353.0
+theme_override_fonts/font = ExtResource("1_xjpkv")
+theme_override_font_sizes/font_size = 25
+text = "In this game, your goal is to
+get all the coins possible
+as well to survive. Make 
+sure to keep track of time!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 401.0
+offset_top = 378.0
+offset_right = 550.0
+offset_bottom = 446.0
+theme_override_fonts/font = ExtResource("2_1g1xt")
+theme_override_font_sizes/font_size = 45
+text = "Back
+"
+script = ExtResource("3_aes65")

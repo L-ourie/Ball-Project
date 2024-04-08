@@ -1,0 +1,186 @@
+[gd_scene load_steps=23 format=3 uid="uid://b6yu5xk1gref2"]
+
+[ext_resource type="Texture2D" uid="uid://dyhohuqf327q" path="res://Textures/Wood066_1K-JPG_Color.jpg" id="2_ocxfb"]
+[ext_resource type="PackedScene" uid="uid://db1ekr6crlrns" path="res://accfloors.tscn" id="5_u62pq"]
+[ext_resource type="Texture2D" uid="uid://nvk7y5awqfeq" path="res://Textures/Wood066_1K-JPG_NormalDX.jpg" id="6_msaov"]
+[ext_resource type="PackedScene" uid="uid://bkchnjdysk8gp" path="res://coin.tscn" id="6_peuw1"]
+[ext_resource type="Script" path="res://coin.gd" id="7_bll7f"]
+[ext_resource type="Texture2D" uid="uid://dg2l1d46q1ou7" path="res://Textures/Wood066_1K-JPG_Roughness.jpg" id="7_cno5c"]
+[ext_resource type="AudioStream" uid="uid://bujqpdxv8s7jf" path="res://Textures/models/destroy lonely - if looks could kill ( slowed + reverb ).mp3" id="8_1qn56"]
+[ext_resource type="PackedScene" uid="uid://brj8mxx4ewnqc" path="res://characterball.tscn" id="8_hfqds"]
+[ext_resource type="FontFile" uid="uid://bqr8uwcokcqa4" path="res://fonts/lemon_milk/LEMONMILK-Medium.otf" id="9_rdc8b"]
+[ext_resource type="Script" path="res://Label.gd" id="10_m7u4q"]
+[ext_resource type="PackedScene" uid="uid://bvtghomm4abs5" path="res://SwordShield.tscn" id="11_wx5x2"]
+[ext_resource type="Script" path="res://SwordShield.gd" id="12_2hq51"]
+[ext_resource type="Script" path="res://AnimationPlayer.gd" id="13_r3mow"]
+[ext_resource type="Script" path="res://Lives.gd" id="14_jt3mk"]
+[ext_resource type="Script" path="res://Timer.gd" id="15_0b7di"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e3w8t"]
+albedo_texture = ExtResource("2_ocxfb")
+roughness_texture = ExtResource("7_cno5c")
+normal_enabled = true
+normal_texture = ExtResource("6_msaov")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ttjm"]
+albedo_texture = ExtResource("2_ocxfb")
+
+[sub_resource type="Environment" id="Environment_cc6g7"]
+background_mode = 1
+background_color = Color(0.117647, 0.67451, 0.945098, 0.6)
+ambient_light_color = Color(0.117647, 0.67451, 0.945098, 1)
+tonemap_mode = 3
+fog_enabled = true
+fog_light_color = Color(0.403922, 0.572549, 0.741176, 1)
+fog_density = 0.0
+adjustment_enabled = true
+adjustment_brightness = 0.75
+adjustment_contrast = 1.5
+adjustment_saturation = 1.2
+
+[sub_resource type="Animation" id="Animation_obnrv"]
+resource_name = "coin"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 2, 2, 2, 1.5, 1, 3.05, 3.05, 3.05)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vt5lo"]
+_data = {
+"coin": SubResource("Animation_obnrv")
+}
+
+[sub_resource type="Animation" id="Animation_lyhvp"]
+resource_name = "SwordPosition"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 14.568, 5.37359, -23.2256, 2, 1, 4.56798, 5.37359, -23.2256)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_coedf"]
+_data = {
+"SwordPosition": SubResource("Animation_lyhvp")
+}
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Wall" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999987, 0.00506143, 0, -0.00506143, 0.999987, -5.85409, 2.32925, 12.6329)
+size = Vector3(1, 3.70926, 10)
+material = SubResource("StandardMaterial3D_e3w8t")
+
+[node name="Hole" type="CSGBox3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.362747, -0.828059, 0)
+operation = 2
+size = Vector3(1.91, 3.431, 3)
+material = SubResource("StandardMaterial3D_3ttjm")
+
+[node name="Light" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.622088, -0.511073, 0.593137, 0.0119972, 0.763702, 0.645457, -0.782856, -0.394415, 0.481221, 14.2093, 3.43062, 0.482341)
+light_color = Color(1, 1, 0.705882, 1)
+light_energy = 2.0
+shadow_enabled = true
+
+[node name="Balll" parent="." instance=ExtResource("8_hfqds")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.07739, 1.0269, 0)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Balll"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.675694, -1.0269, 0)
+stream = ExtResource("8_1qn56")
+volume_db = 2.0
+autoplay = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+
+[node name="blocks2" parent="." instance=ExtResource("5_u62pq")]
+transform = Transform3D(-0.00774917, 0, -0.99997, -0.027537, 0.999621, 0.000213395, 0.999591, 0.0275378, -0.00774623, 9.20791, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cc6g7")
+
+[node name="coin" parent="." instance=ExtResource("6_peuw1")]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, -2, 0, 2, -8.74228e-08, 9.099, 1.815, -4.503)
+script = ExtResource("7_bll7f")
+
+[node name="coin2" parent="." instance=ExtResource("6_peuw1")]
+transform = Transform3D(2.91, 0, 0, 0, -1.272e-07, -2.91, 0, 2.91, -1.272e-07, 9.00613, 3.82974, -9.30671)
+script = ExtResource("7_bll7f")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="coin2"]
+autoplay = "coin"
+libraries = {
+"": SubResource("AnimationLibrary_vt5lo")
+}
+
+[node name="coin3" parent="." instance=ExtResource("6_peuw1")]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, -2, 0, 2, -8.74228e-08, 9.099, 4.07172, -14.7542)
+script = ExtResource("7_bll7f")
+
+[node name="SwordShield" parent="." instance=ExtResource("11_wx5x2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.568, 5.37359, -23.2256)
+script = ExtResource("12_2hq51")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SwordShield"]
+autoplay = "SwordPosition"
+libraries = {
+"": SubResource("AnimationLibrary_coedf")
+}
+script = ExtResource("13_r3mow")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 960.0
+offset_bottom = 538.0
+
+[node name="Coin Count" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 874.0
+offset_top = -2.0
+offset_right = 1039.0
+offset_bottom = 78.0
+theme_override_fonts/font = ExtResource("9_rdc8b")
+text = "Coins = 0"
+script = ExtResource("10_m7u4q")
+
+[node name="Lives" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 25.0
+theme_override_fonts/font = ExtResource("9_rdc8b")
+text = "Lives = 1"
+script = ExtResource("14_jt3mk")
+
+[node name="Timer" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 2.0
+offset_right = 464.0
+offset_bottom = 25.0
+theme_override_fonts/font = ExtResource("9_rdc8b")
+text = "Timeleft= 25"
+script = ExtResource("15_0b7di")
+
+[node name="Timer" type="Timer" parent="Control/Timer"]
+autostart = true
+
+[connection signal="body_entered" from="coin" to="coin" method="_on_body_entered"]
+[connection signal="coinCollected" from="coin" to="Control/Coin Count" method="_on_coin_coin_collected"]
+[connection signal="body_entered" from="coin2" to="coin2" method="_on_body_entered"]
+[connection signal="coinCollected" from="coin2" to="Control/Coin Count" method="_on_coin_coin_collected"]
+[connection signal="body_entered" from="coin3" to="coin3" method="_on_body_entered"]
+[connection signal="coinCollected" from="coin3" to="Control/Coin Count" method="_on_coin_coin_collected"]
+[connection signal="body_entered" from="SwordShield" to="SwordShield" method="_on_body_entered"]
+[connection signal="hit" from="SwordShield" to="Control/Lives" method="_on_sword_shield_hit"]
+[connection signal="Times" from="Control/Timer" to="SwordShield" method="_on_timer_times"]
+[connection signal="timeout" from="Control/Timer/Timer" to="Control/Timer" method="_on_timer_timeout"]

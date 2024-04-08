@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://ci66bqkl4ivdx"]
+
+[ext_resource type="Texture2D" uid="uid://cnxcmmu42bw4h" path="res://Textures/pixar-ball.png" id="1_1rlpx"]
+[ext_resource type="ArrayMesh" uid="uid://bhb0t2c16xam7" path="res://Textures/pixar-ball.obj" id="2_rx856"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2bh8j"]
+albedo_texture = ExtResource("1_1rlpx")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_o8bub"]
+points = PackedVector3Array(-0.305287, -0.946466, -0.0304139, 0.184095, 0.981583, 0.0305544, 0.184095, 0.981583, -0.0305544, 0.978944, -0.183408, 0.0304722, -0.183408, -0.0304722, 0.978944, -0.573815, 0.211395, -0.785399, -0.940826, 0.212389, 0.242812, 0.42514, -0.182121, -0.88092, 0.51528, -0.818408, 0.242541, 0.573815, 0.211395, 0.785399, 0.636504, 0.636504, -0.42421, -0.424381, 0.848951, 0.303183, -0.603907, -0.513283, -0.603907, -0.542812, -0.633312, 0.542812, 0.332004, -0.785082, -0.513235, -0.15163, 0.697534, -0.697534, 0.302597, -0.574857, 0.756491, 0.452386, 0.72393, 0.512666, -0.914044, -0.36558, -0.152341, -0.787672, 0.545428, -0.272619, -0.272575, 0.54534, 0.787734, 0.821005, 0.547209, 0.151854, -0.0304721, -0.183408, -0.97894, 0.880922, -0.182122, -0.425141, -0.757491, -0.0605613, 0.636369, 0.819533, -0.151582, 0.546418, 0.393954, 0.33336, -0.848881, 0.0305549, -0.981602, 0.183906, -0.332747, 0.907803, -0.242119, -0.15163, -0.697534, -0.697534, -0.910731, 0.0606773, -0.394688, 0.756524, -0.574882, -0.30242)
+
+[node name="Ball" type="CharacterBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_2bh8j")
+mesh = ExtResource("2_rx856")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_o8bub")

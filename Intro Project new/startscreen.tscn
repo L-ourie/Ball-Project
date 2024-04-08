@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://wovcuy3gg6yc"]
+
+[ext_resource type="FontFile" uid="uid://vrey1i77dju2" path="res://fonts/lemon_milk/LEMONMILK-Bold.otf" id="1_4snct"]
+[ext_resource type="Script" path="res://start.gd" id="1_nbi1m"]
+[ext_resource type="FontFile" uid="uid://bqr8uwcokcqa4" path="res://fonts/lemon_milk/LEMONMILK-Medium.otf" id="2_2ltgg"]
+[ext_resource type="Script" path="res://Quit.gd" id="2_3n8f0"]
+[ext_resource type="Script" path="res://Instructions.gd" id="5_bq6rc"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 958.0
+offset_bottom = 538.0
+color = Color(0.568627, 1, 1, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 258.0
+offset_top = 94.0
+offset_right = 711.0
+offset_bottom = 221.0
+theme_override_fonts/font = ExtResource("1_4snct")
+theme_override_font_sizes/font_size = 90
+text = "Wipeout"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="start" type="Button" parent="."]
+modulate = Color(1, 0.152941, 1, 1)
+layout_mode = 0
+offset_left = 380.0
+offset_top = 231.0
+offset_right = 573.0
+offset_bottom = 302.0
+theme_override_colors/font_pressed_color = Color(0, 0.666667, 0, 1)
+theme_override_colors/font_hover_color = Color(0.321569, 0.603922, 0.6, 1)
+theme_override_fonts/font = ExtResource("2_2ltgg")
+theme_override_font_sizes/font_size = 45
+text = "Start"
+script = ExtResource("1_nbi1m")
+
+[node name="Quit" type="Button" parent="."]
+modulate = Color(1, 0.152941, 1, 1)
+layout_mode = 0
+offset_left = 381.0
+offset_top = 309.0
+offset_right = 574.0
+offset_bottom = 380.0
+theme_override_colors/font_pressed_color = Color(0, 0.666667, 0, 1)
+theme_override_colors/font_hover_color = Color(0.321569, 0.603922, 0.6, 1)
+theme_override_fonts/font = ExtResource("2_2ltgg")
+theme_override_font_sizes/font_size = 45
+text = "Quit"
+script = ExtResource("2_3n8f0")
+
+[node name="Instructions" type="Button" parent="."]
+modulate = Color(1, 0.152941, 1, 1)
+layout_mode = 0
+offset_left = 306.0
+offset_top = 390.0
+offset_right = 653.0
+offset_bottom = 458.0
+theme_override_colors/font_pressed_color = Color(0, 0.666667, 0, 1)
+theme_override_colors/font_hover_color = Color(0.321569, 0.603922, 0.6, 1)
+theme_override_fonts/font = ExtResource("2_2ltgg")
+theme_override_font_sizes/font_size = 45
+text = "Instructions"
+script = ExtResource("5_bq6rc")
+
+[connection signal="pressed" from="start" to="start" method="_on_pressed"]
+[connection signal="pressed" from="Quit" to="Quit" method="_on_pressed"]

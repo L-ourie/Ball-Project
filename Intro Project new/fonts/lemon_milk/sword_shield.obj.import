@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ckrjbyc6pv5rp"
+path="res://.godot/imported/sword_shield.obj-f38bc2a809143be03911bf67662a124e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/sword_shield.obj-f38bc2a809143be03911bf67662a124e.mesh"]
+
+source_file="res://fonts/lemon_milk/sword_shield.obj"
+dest_files=["res://.godot/imported/sword_shield.obj-f38bc2a809143be03911bf67662a124e.mesh", "res://.godot/imported/sword_shield.obj-f38bc2a809143be03911bf67662a124e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

@@ -1,0 +1,27 @@
+[gd_scene load_steps=8 format=3 uid="uid://bvtghomm4abs5"]
+
+[ext_resource type="Texture2D" uid="uid://clv1fff7qxdqc" path="res://Textures/Metal041A_1K-JPG_Color.jpg" id="1_tleku"]
+[ext_resource type="Texture2D" uid="uid://bcaj62x82rl2v" path="res://Textures/Metal041A_1K-JPG_Metalness(1).jpg" id="2_cgjpk"]
+[ext_resource type="Texture2D" uid="uid://cucf1w8k62pk1" path="res://Textures/Metal041A_1K-JPG_NormalDX.jpg" id="3_c47kd"]
+[ext_resource type="Texture2D" uid="uid://df4xiifu8n0k5" path="res://Textures/Metal041A_1K-JPG_Roughness (1).jpg" id="4_f3oom"]
+[ext_resource type="ArrayMesh" uid="uid://ckrjbyc6pv5rp" path="res://fonts/lemon_milk/sword_shield.obj" id="5_v3m8e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0nw5"]
+albedo_texture = ExtResource("1_tleku")
+metallic = 1.0
+metallic_texture = ExtResource("2_cgjpk")
+roughness_texture = ExtResource("4_f3oom")
+normal_enabled = true
+normal_texture = ExtResource("3_c47kd")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wh0uq"]
+points = PackedVector3Array(-0.849897, 0.230143, -0.10228, 1.09799, 0.832401, 0.0748459, 0.672817, -0.726345, 0.0394416, -0.212363, 0.51346, 0.251971, -0.212363, -0.620143, 0.251971, -1.09799, 0.832401, 0.0748459, 1.0272, 0.832401, -0.10228, -0.602029, -0.655433, -0.0668407, 0.247868, -0.54923, 0.251971, -1.09799, 0.761488, -0.10228, 0.602029, -0.655433, -0.0668407, -0.672817, -0.726345, 0.0394416, 0.212363, 0.51346, 0.251971, 1.09799, 0.690575, -0.10228, 0.0329054, -0.775417, 0.173902, 1.09799, 0.655286, 0.0748459, 0.849897, 0.230143, -0.10228, -1.09799, 0.690575, 0.0748459, -1.0272, 0.832401, -0.10228, -0.0305718, 0.600713, 0.228321, -1.13327, 0.726032, -0.0668407, -0.247868, -0.54923, 0.251971, 1.13327, 0.690575, -0.0314017, 0.212363, -0.620143, 0.251971, -1.13327, 0.690575, 0.00400262, 1.13327, 0.690575, 0.0394416, -0.0329309, -0.776032, 0.173978, 1.13327, 0.726032, -0.0668407, 0.030883, -0.695644, 0.229883, -1.09799, 0.726032, -0.10228, -1.13327, 0.726032, 0.0394416, -1.13327, 0.690575, -0.0314017)
+
+[node name="StaticBody3D" type="Area3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_a0nw5")
+mesh = ExtResource("5_v3m8e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_wh0uq")

@@ -1,0 +1,148 @@
+[gd_scene load_steps=18 format=3 uid="uid://b6yu5xk1gref2"]
+
+[ext_resource type="Texture2D" uid="uid://dyhohuqf327q" path="res://Textures/Wood066_1K-JPG_Color.jpg" id="2_ocxfb"]
+[ext_resource type="PackedScene" uid="uid://db1ekr6crlrns" path="res://accfloors.tscn" id="5_u62pq"]
+[ext_resource type="Texture2D" uid="uid://nvk7y5awqfeq" path="res://Textures/Wood066_1K-JPG_NormalDX.jpg" id="6_msaov"]
+[ext_resource type="PackedScene" uid="uid://bkchnjdysk8gp" path="res://coin.tscn" id="6_peuw1"]
+[ext_resource type="Script" path="res://coin.gd" id="7_bll7f"]
+[ext_resource type="Texture2D" uid="uid://dg2l1d46q1ou7" path="res://Textures/Wood066_1K-JPG_Roughness.jpg" id="7_cno5c"]
+[ext_resource type="AudioStream" uid="uid://bujqpdxv8s7jf" path="res://Textures/models/destroy lonely - if looks could kill ( slowed + reverb ).mp3" id="8_1qn56"]
+[ext_resource type="PackedScene" uid="uid://brj8mxx4ewnqc" path="res://characterball.tscn" id="8_hfqds"]
+[ext_resource type="FontFile" uid="uid://bqr8uwcokcqa4" path="res://fonts/lemon_milk/LEMONMILK-Medium.otf" id="9_rdc8b"]
+[ext_resource type="Script" path="res://Label.gd" id="10_m7u4q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e3w8t"]
+albedo_texture = ExtResource("2_ocxfb")
+roughness_texture = ExtResource("7_cno5c")
+normal_enabled = true
+normal_texture = ExtResource("6_msaov")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ttjm"]
+albedo_texture = ExtResource("2_ocxfb")
+
+[sub_resource type="Environment" id="Environment_cc6g7"]
+background_mode = 1
+background_color = Color(0.117647, 0.67451, 0.945098, 0.6)
+ambient_light_color = Color(0.117647, 0.67451, 0.945098, 1)
+tonemap_mode = 3
+fog_enabled = true
+fog_light_color = Color(0.403922, 0.572549, 0.741176, 1)
+fog_density = 0.0
+adjustment_enabled = true
+adjustment_brightness = 0.75
+adjustment_contrast = 1.5
+adjustment_saturation = 1.2
+
+[sub_resource type="Animation" id="Animation_q82af"]
+resource_name = "scale"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 2, 2, 2, 1.5, 1, 4.405, 4.405, 4.405)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y15of"]
+_data = {
+"scale": SubResource("Animation_q82af")
+}
+
+[sub_resource type="Animation" id="Animation_rw4gr"]
+resource_name = "coin"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 9.09529, 1.815, -9.39035, 1.5, 1, 9.095, 3.6, -9.39, 3, 1, 9.095, 1.815, -9.39)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p0lv4"]
+_data = {
+"coin": SubResource("Animation_rw4gr")
+}
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Wall" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999987, 0.00506143, 0, -0.00506143, 0.999987, -5.85409, 2.32925, 12.6329)
+size = Vector3(1, 3.70926, 10)
+material = SubResource("StandardMaterial3D_e3w8t")
+
+[node name="Hole" type="CSGBox3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.362747, -0.828059, 0)
+operation = 2
+size = Vector3(1.91, 3.431, 3)
+material = SubResource("StandardMaterial3D_3ttjm")
+
+[node name="Light" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.622088, -0.511073, 0.593137, 0.0119972, 0.763702, 0.645457, -0.782856, -0.394415, 0.481221, 14.2093, 3.43062, 0.482341)
+light_color = Color(1, 1, 0.705882, 1)
+light_energy = 2.0
+shadow_enabled = true
+
+[node name="Balll" parent="." instance=ExtResource("8_hfqds")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.07739, 1.0269, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+
+[node name="blocks2" parent="." instance=ExtResource("5_u62pq")]
+transform = Transform3D(-0.00774917, 0, -0.99997, -0.027537, 0.999621, 0.000213395, 0.999591, 0.0275378, -0.00774623, 9.20791, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cc6g7")
+
+[node name="coin" parent="." instance=ExtResource("6_peuw1")]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, -2, 0, 2, -8.74228e-08, 9.099, 1.815, -4.503)
+script = ExtResource("7_bll7f")
+
+[node name="coin3" parent="." instance=ExtResource("6_peuw1")]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, -2, 0, 2, -8.74228e-08, 9.099, 6.41339, -15.0343)
+script = ExtResource("7_bll7f")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="coin3"]
+autoplay = "scale"
+libraries = {
+"": SubResource("AnimationLibrary_y15of")
+}
+
+[node name="coin2" parent="." instance=ExtResource("6_peuw1")]
+transform = Transform3D(2, 0, 0, 0, -8.74228e-08, -2, 0, 2, -8.74228e-08, 9.09529, 1.815, -9.39035)
+script = ExtResource("7_bll7f")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="coin2"]
+autoplay = "coin"
+libraries = {
+"": SubResource("AnimationLibrary_p0lv4")
+}
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_1qn56")
+volume_db = 10.905
+autoplay = true
+
+[node name="Lives" type="Label" parent="."]
+offset_right = 165.0
+offset_bottom = 80.0
+theme_override_fonts/font = ExtResource("9_rdc8b")
+text = "Lives = 3"
+script = ExtResource("10_m7u4q")
+
+[node name="Coin Count" type="Label" parent="."]
+offset_left = 874.0
+offset_top = -2.0
+offset_right = 1039.0
+offset_bottom = 78.0
+theme_override_fonts/font = ExtResource("9_rdc8b")
+text = "Coins = 0"
+script = ExtResource("10_m7u4q")
+
+[connection signal="body_entered" from="coin" to="coin" method="_on_body_entered"]
+[connection signal="coinCollected" from="coin" to="Coin Count" method="_on_coin_coin_collected"]
+[connection signal="body_entered" from="coin3" to="coin3" method="_on_body_entered"]
+[connection signal="body_entered" from="coin2" to="coin2" method="_on_body_entered"]

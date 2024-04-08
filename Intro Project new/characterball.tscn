@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://brj8mxx4ewnqc"]
+
+[ext_resource type="Script" path="res://characterball.gd" id="1_f1jpj"]
+[ext_resource type="Texture2D" uid="uid://cnxcmmu42bw4h" path="res://Textures/pixar-ball.png" id="1_gtd7r"]
+[ext_resource type="ArrayMesh" uid="uid://bhb0t2c16xam7" path="res://Textures/pixar-ball.obj" id="2_kwwcv"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_b6neg"]
+friction = 4.0
+rough = true
+bounce = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_15p43"]
+albedo_texture = ExtResource("1_gtd7r")
+roughness = 0.4
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8ua8l"]
+points = PackedVector3Array(-0.305287, -0.946466, -0.0304139, 0.184095, 0.981583, 0.0305544, 0.184095, 0.981583, -0.0305544, 0.978944, -0.183408, 0.0304722, -0.183408, -0.0304722, 0.978944, -0.573815, 0.211395, -0.785399, -0.940826, 0.212389, 0.242812, 0.42514, -0.182121, -0.88092, 0.51528, -0.818408, 0.242541, 0.573815, 0.211395, 0.785399, 0.636504, 0.636504, -0.42421, -0.424381, 0.848951, 0.303183, -0.603907, -0.513283, -0.603907, -0.542812, -0.633312, 0.542812, 0.332004, -0.785082, -0.513235, -0.15163, 0.697534, -0.697534, 0.302597, -0.574857, 0.756491, 0.452386, 0.72393, 0.512666, -0.914044, -0.36558, -0.152341, -0.787672, 0.545428, -0.272619, -0.272575, 0.54534, 0.787734, 0.821005, 0.547209, 0.151854, -0.0304721, -0.183408, -0.97894, 0.880922, -0.182122, -0.425141, -0.757491, -0.0605613, 0.636369, 0.819533, -0.151582, 0.546418, 0.393954, 0.33336, -0.848881, 0.0305549, -0.981602, 0.183906, -0.332747, 0.907803, -0.242119, -0.15163, -0.697534, -0.697534, -0.910731, 0.0606773, -0.394688, 0.756524, -0.574882, -0.30242)
+
+[node name="Balll" type="RigidBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_b6neg")
+angular_damp = 1.0
+script = ExtResource("1_f1jpj")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+top_level = true
+
+[node name="Camera3D" type="Camera3D" parent="Marker3D"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 2.85, 3.5)
+current = true
+
+[node name="Model" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_15p43")
+mesh = ExtResource("2_kwwcv")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_8ua8l")
+
+[node name="Floor Check" type="RayCast3D" parent="."]
+top_level = true
+target_position = Vector3(0, -1.5, 0)
