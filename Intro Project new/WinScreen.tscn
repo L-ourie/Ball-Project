@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://ci1aivj3ryovf"]
+
+[ext_resource type="Texture2D" uid="uid://3iml6wrnhiju" path="res://pics/Y2.png" id="1_ldn8l"]
+[ext_resource type="Texture2D" uid="uid://ktlnlduiluno" path="res://pics/O3.png" id="2_ve0cu"]
+[ext_resource type="Texture2D" uid="uid://burbtrerglcjm" path="res://pics/U.png" id="3_ww1xm"]
+[ext_resource type="Texture2D" uid="uid://bpnrk4murib8l" path="res://pics/W3.png" id="4_p1aoi"]
+[ext_resource type="Texture2D" uid="uid://bmyjy132y3xep" path="res://pics/N2.png" id="5_hgyss"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 958.0
+offset_bottom = 541.0
+color = Color(0.247059, 1, 0.337255, 1)
+
+[node name="Y2" type="Sprite2D" parent="."]
+position = Vector2(238, 170)
+scale = Vector2(0.655, 0.655)
+texture = ExtResource("1_ldn8l")
+
+[node name="O3" type="Sprite2D" parent="."]
+position = Vector2(447, 160)
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("2_ve0cu")
+
+[node name="U" type="Sprite2D" parent="."]
+position = Vector2(660, 155)
+scale = Vector2(0.885, 0.885)
+texture = ExtResource("3_ww1xm")
+
+[node name="W3" type="Sprite2D" parent="."]
+position = Vector2(201, 383)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_p1aoi")
+
+[node name="O4" type="Sprite2D" parent="."]
+position = Vector2(439, 391)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("2_ve0cu")
+
+[node name="N2" type="Sprite2D" parent="."]
+position = Vector2(670, 379)
+scale = Vector2(0.765, 0.765)
+texture = ExtResource("5_hgyss")

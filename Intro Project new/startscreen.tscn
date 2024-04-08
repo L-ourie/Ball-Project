@@ -76,3 +76,4 @@ script = ExtResource("5_bq6rc")
 
 [connection signal="pressed" from="start" to="start" method="_on_pressed"]
 [connection signal="pressed" from="Quit" to="Quit" method="_on_pressed"]
+[connection signal="pressed" from="Instructions" to="Instructions" method="_on_pressed"]

@@ -56,3 +56,5 @@ theme_override_font_sizes/font_size = 45
 text = "Back
 "
 script = ExtResource("3_aes65")
+
+[connection signal="pressed" from="Back" to="Back" method="_on_pressed"]
